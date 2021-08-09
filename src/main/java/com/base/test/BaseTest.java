@@ -5,12 +5,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
 public class BaseTest{
 
-
+	public ExtentHtmlReporter extentHtmlReporter;
+	public  ExtentReports extentReports;
+	public  ExtentTest extentTest;
+	
 	public WebDriver webDriver;
 	
-	public WebDriver initializedDriver(String browserName) {
+	
+	public BaseTest() {
+		 
+		  extentHtmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"\\test-output\\report.html");
+		  extentHtmlReporter.config().setDocumentTitle("Regression Execution Report");
+		  extentHtmlReporter.config().setReportName("Regression July Release");
+		  extentHtmlReporter.config().setTheme(Theme.DARK);
+		  
+		  extentReports=new ExtentReports();
+		  extentReports.attachReporter(extentHtmlReporter);
+		  extentReports.setSystemInfo("HOSTNAME","LOCALHOST");
+		  extentReports.setSystemInfo("OS","WINDOWS 10");
+		  extentReports.setSystemInfo("BROWSER","FIREFOX");
+	}
+	
+	
+	public void initializedDriver(String browserName) {
 		
 		if(browserName.equals("Chrome")) {
 			
@@ -33,7 +57,7 @@ public class BaseTest{
 			
 			webDriver=null;
 		}
-		return webDriver;
+		
 	}
 	
 	public void closeBrowser() {

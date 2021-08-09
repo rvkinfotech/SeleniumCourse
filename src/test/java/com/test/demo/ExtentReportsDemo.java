@@ -9,6 +9,10 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.base.test.BaseTest;
 import com.beust.jcommander.Parameter;
+import com.utility.GetScreenshot;
+
+import java.io.IOException;
+import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,31 +31,18 @@ import org.testng.annotations.Parameters;
 
 public class ExtentReportsDemo extends BaseTest {
 	
-  WebDriver driver;	
-  
-  ExtentHtmlReporter extentHtmlReporter;
-  ExtentReports extentReports;
-  ExtentTest extentTest;
+
  
   @BeforeTest
   public void setupReports() {
 	  
-	  extentHtmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"\\test-output\\report.html");
-	  extentHtmlReporter.config().setDocumentTitle("Regression Execution Report");
-	  extentHtmlReporter.config().setReportName("Regression July Release");
-	  extentHtmlReporter.config().setTheme(Theme.DARK);
-	  
-	  extentReports=new ExtentReports();
-	  extentReports.attachReporter(extentHtmlReporter);
-	  extentReports.setSystemInfo("HOSTNAME","LOCALHOST");
-	  extentReports.setSystemInfo("OS","WINDOWS 10");
-	  extentReports.setSystemInfo("BROWSER","FIREFOX");
+	 
 	  
   }
   
   @BeforeClass
 	public void beforeClass() {
-	  driver=initializedDriver("Edge");
+	  initializedDriver("Edge");
 	}
 
 	@AfterClass
@@ -60,13 +51,14 @@ public class ExtentReportsDemo extends BaseTest {
 	}
   
   @Test(dataProvider = "dp", groups="Regression")
-  public void test1(String userName, String userPassword) {
+  public void test1(String userName, String userPassword) throws IOException {
 	  
 	  extentTest=extentReports.createTest("Login to Facebook");
-	  driver.get("https://www.facebook.com/");
-	  driver.findElement(By.name("email")).sendKeys(userName);
-		driver.findElement(By.name("pass")).sendKeys(userPassword);
-		driver.findElement(By.name("login")).click();
+	  webDriver.get("https://www.facebook.com/");
+	  webDriver.findElement(By.name("email")).sendKeys(userName);
+	  webDriver.findElement(By.name("pass")).sendKeys(userPassword);
+	  webDriver.findElement(By.name("login")).click();
+	  GetScreenshot.captureScreenShot(webDriver,"test1"+new Date());
 		
   }
   

@@ -16,21 +16,16 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.base.test.BaseTest;
 
 public class SimpleTestOnFacebosokLogin extends BaseTest {
-
-	
-	 WebDriver driver;
-	
-	 
 	 
 	 @BeforeClass
 	 public void beforeClass() {
-		 driver=initializedDriver("Firefox");
-		 driver.get("https://www.facebook.com/");
+		 initializedDriver("Firefox");
+		 webDriver.get("https://www.facebook.com/");
 	 }
 	  
 	  @Test public void verifyFirefoxBroserOpensFacebook() {
 		  	
-	  String actualTitle=driver.getTitle();
+	  String actualTitle=webDriver.getTitle();
 	  String expectedTitle="Facebook – log in or sign up"; assertEquals(actualTitle,
 	  expectedTitle); 
 	  quitBrowser();
@@ -42,16 +37,16 @@ public class SimpleTestOnFacebosokLogin extends BaseTest {
 	@Test
 	public void verifyFacebookLoginWithWrongCredentials() {
 
-		driver.findElement(By.name("email")).sendKeys("Juju");
-		driver.findElement(By.name("pass")).sendKeys("Juju");
-		driver.findElement(By.name("login")).click();
+		webDriver.findElement(By.name("email")).sendKeys("Juju");
+		webDriver.findElement(By.name("pass")).sendKeys("Juju");
+		webDriver.findElement(By.name("login")).click();
 
 		try {
 			Thread.sleep(2000);
 		} catch (Exception e) {
 		}
 
-		String actualError = driver.findElement(By.xpath("//*[contains(text(),'Invalid username or password')]")).getText();
+		String actualError = webDriver.findElement(By.xpath("//*[contains(text(),'Invalid username or password')]")).getText();
 		String expectedError = "Invalid username or password";
 
 		assertEquals(expectedError, actualError);
