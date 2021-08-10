@@ -13,12 +13,13 @@ public class LoginPageTest2 extends BaseTest{
 	
   @Test
   public void loginTest() {
+	  extentTest=extentReports.createTest("Login to loginTest");
 	  initializedDriver("Chrome");
 	  webDriver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
 	   lp=new LoginPge(webDriver);
 	   dp=new DashboardPage(webDriver);
 	   lp.doLoginOperation("admin@yourstore.com","admin");
 	   lp.verifyHomePage("Dashboard");
-	   
+	   extentReports.flush();
   }
 }
