@@ -42,7 +42,7 @@ public class ExtentReportsDemo extends BaseTest {
   
   @BeforeClass
 	public void beforeClass() {
-	  initializedDriver("Edge");
+	  initializedDriver("Chrome");
 	}
 
 	@AfterClass
