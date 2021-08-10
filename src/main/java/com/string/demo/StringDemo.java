@@ -94,6 +94,8 @@ public class StringDemo {
 	     //System.out.println(str7+""+str6);
 	     System.out.println(str8);
 	     
+	     System.out.println(str7.concat(str6));
+	     
 	     //5. String content comparision
 	     
 	 	if(s2.equals(s3)) // content compare - equals()
@@ -114,7 +116,45 @@ public class StringDemo {
 	 	System.out.println(str7.charAt(2));
 	 	//System.out.println(str7.charAt(3)); // index out of bound error
 	 	
-	 
+	 	//9. start-with
+	 	
+	 	String sw=new String("Java is World");
+	 	System.out.println(sw.startsWith("Java")); //true
+	 	System.out.println(sw.startsWith("JAVA")); // false
+	 	
+	 	//10. ends-with
+	 	
+	 	String ew=new String("Java is World");
+	 	System.out.println(ew.endsWith("World")); //true
+	 	System.out.println(ew.endsWith("WorlD")); // false
+	 	
+	 	
+	 	//11. split
+	 	
+	 	String sp=new String("Java is, World");
+	 	String []splitArray = sp.split(",");
+	 	
+	 	/** Index For loop */
+	 	for(int i=0;i<splitArray.length-1;i++)
+	 		System.out.println(splitArray[i]);
+	 	
+	 	/** Extended for loop */
+	 	for(String s:sp.split(",")) 
+	 		System.out.println(s);
+	 	
+	 	// 12. trim()
+	 	
+	 	String trimdemo=new String("      hello             ");
+	 	System.out.println(trimdemo.length());
+	 	System.out.println(trimdemo.trim().length());
+	 	System.out.println(trimdemo.length());
+	 	
+	 	
+	 	//13. replace
+	 	
+	 	String replaceDemo=new String("Java is better than Python");
+	 	//replaceDemo.replace("Java", "Python");
+	 	System.out.println(replaceDemo.replace("Java", "Python"));
 	}
 
 }

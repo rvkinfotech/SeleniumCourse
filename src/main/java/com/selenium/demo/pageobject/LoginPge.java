@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
-import static org.testng.Assert.assertEquals;
+
 
 public class LoginPge {
 
@@ -40,7 +41,7 @@ public class LoginPge {
 	
 	public void verifyHomePage(String expected) {
 		
-		assertEquals(expected,dp.getDashboardHeader());
+		Assert.assertEquals(expected,dp.getDashboardHeader());
 	}
 	
 }
