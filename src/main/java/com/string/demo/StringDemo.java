@@ -155,6 +155,24 @@ public class StringDemo {
 	 	String replaceDemo=new String("Java is better than Python");
 	 	//replaceDemo.replace("Java", "Python");
 	 	System.out.println(replaceDemo.replace("Java", "Python"));
+	 	
+	 	
+	 	//14. 
+	 	
+	 	String indexM=new String("Java is Great Java");
+	 	indexM.indexOf('G');
+	 	indexM.indexOf("is");
+	 	System.out.println(indexM.indexOf('G'));
+	 	System.out.println(indexM.indexOf("is"));
+	 	
+	 	System.out.println(indexM.lastIndexOf('a'));
+	 	System.out.println(indexM.lastIndexOf("Java"));
+	 	
+	 System.out.println(indexM.indexOf('a', 14));
+	 System.out.println(indexM.lastIndexOf('a', 17));
+	 	
+	 	
+	 	
 	}
 
 }
