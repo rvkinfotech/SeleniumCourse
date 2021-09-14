@@ -7,10 +7,15 @@ public class EDemo3 {
 		String s=null;
 		
 		try {
-		System.out.println(s.length());
+		
+			System.out.println(s.length());
+			
 		}catch(NullPointerException e) {
+			
 			e.printStackTrace();
+			
 		}finally {
+			
 			System.out.println("End of the program");
 		}
 	}

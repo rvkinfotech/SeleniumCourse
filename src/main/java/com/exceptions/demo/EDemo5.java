@@ -11,11 +11,14 @@ public class EDemo5 {
 			// error anticipate 
 			System.out.println(s.length());
 			
+		}catch(NullPointerException t) {
+			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}catch(Throwable t) {
 			
-		}finally {
+		}
+		finally {
 			
 			//resources release
 		}
